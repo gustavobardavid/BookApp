@@ -40,3 +40,52 @@
 .read-the-docs {
   color: #888;
 }
+
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+}
+
+.book {
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  padding: 10px;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.book img {
+  border-radius: 4px;
+  height: 200px;
+  width: 300px;
+  object-fit: contain;
+}
+
+.cartaoNome {
+  font-size: 1.5rem;
+  margin-top: 9px;
+  margin-bottom: 25px;
+  color: black;
+}
+
+.book .cartaoFuncao {
+  font-size: 1.2rem;
+  color: #7c7c7c;
+  margin: 0;
+  max-width: 220px;
+  text-align: center;
+}
+
+
+.book:hover {
+  filter: drop-shadow(0 0 2em #ff0000aa);
+}
+.book.react:hover {
+filter: drop-shadow(0 0 2em #61dafbaa);
+}

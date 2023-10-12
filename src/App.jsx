@@ -3,7 +3,7 @@ import './App.css';
 
 function App() {
   const [books, setBooks] = useState([]);
-  const [query, setQuery] = useState('javascript');
+  const [query, setQuery] = useState('john green');
 
   useEffect(() => {
     fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`)
@@ -28,16 +28,29 @@ function App() {
         />
       </div>
       <div className="book-list">
-        {books.map((book) => (
-          <div key={book.id} className="book">
-            <img
-              src={book.volumeInfo.imageLinks?.thumbnail}
-              alt={book.volumeInfo.title}
-            />
-            <h2>{book.volumeInfo.title}</h2>
-            <p>{book.volumeInfo.authors?.join(', ')}</p>
-          </div>
-        ))}
+      {books.map((book) => (
+  <div key={book.id} className="book">
+    <img
+      src={book.volumeInfo.imageLinks?.thumbnail}
+      alt={book.volumeInfo.title}
+    />
+    <h2>{book.volumeInfo.title}</h2>
+    <p>{book.volumeInfo.authors?.join(', ')}</p>
+    
+    {book.volumeInfo.description && <p>{book.volumeInfo.description}</p>}
+    
+    {book.saleInfo.listPrice && (
+      <p>Preço: {book.saleInfo.listPrice.amount} {book.saleInfo.listPrice.currencyCode}</p>
+    )}
+
+    {book.saleInfo.buyLink && (
+      <a href={book.saleInfo.buyLink} target="_blank" rel="noopener noreferrer">
+        Comprar
+      </a>
+    )}
+  </div>
+))}
+
       </div>
     </div>
   );
